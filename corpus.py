@@ -26,7 +26,7 @@ class Corpus:
             self.naut += 1
         self.authors[doc.auteur].add(doc_id, doc)
 
-        # Mettre à jour le texte combiné
+        # Mettre à jour le texte combine
         self.full_text += " " + doc.texte
 
     def save(self, filename):
@@ -50,7 +50,7 @@ class Corpus:
                 doc = Document(row["titre"], row["auteur"], row["date"], row["url"], row["texte"])
             self.add_document(doc)
 
-    # ---------------- TD6 : Analyse textuelle ----------------
+    #TD6 : Analyse textuelle 
     def nettoyer_texte(self, texte):
         """Nettoyage basique : minuscules, suppression \n, ponctuation"""
         texte = texte.lower()
