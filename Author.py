@@ -1,11 +1,12 @@
 class Author:
-    """Classe pour représenter un auteur et sa production"""
+    """Classe pour repreesenter un auteur et sa production"""
     def __init__(self, name):
         self.name = name
         self.ndoc = 0
         self.production = {}  # dictionnaire id_doc : Document
 
     def add(self, doc_id, doc):
+        
         self.production[doc_id] = doc
         self.ndoc += 1
 
