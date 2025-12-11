@@ -5,14 +5,14 @@ from src.Document import Document, RedditDocument, ArxivDocument
 from src.Author import Author
 
 class Corpus:
-    """Classe pour gérer un corpus complet de documents"""
+    #Classe pour gérer un corpus complet de documents
     def __init__(self, nom):
         self.nom = nom
-        self.authors = {}      # nom -> Author
-        self.id2doc = {}       # id -> Document
+        self.authors = {}      
+        self.id2doc = {}       
         self.ndoc = 0
         self.naut = 0
-        self.full_text = ""    # texte combiné pour recherche rapide
+        self.full_text = ""    
 
     def add_document(self, doc):
         """Ajoute un document au corpus"""
@@ -30,7 +30,7 @@ class Corpus:
         self.full_text += " " + doc.texte
 
     def save(self, filename):
-        """Sauvegarde le corpus dans un CSV"""
+       # Sauvegarde le corpus dans un CSV
         data = []
         for doc_id, doc in self.id2doc.items():
             data.append([doc_id, doc.titre, doc.auteur, doc.date, doc.url, doc.type, doc.texte])
@@ -38,7 +38,7 @@ class Corpus:
         df.to_csv(filename, sep="\t", index=False)
 
     def load(self, filename):
-        """Charge le corpus depuis un CSV"""
+        #Charge le corpus depuis un CSV
         df = pd.read_csv(filename, sep="\t")
         for _, row in df.iterrows():
             if row["type"] == "Reddit":
