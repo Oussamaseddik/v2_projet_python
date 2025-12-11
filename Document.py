@@ -2,7 +2,7 @@
 from datetime import datetime
 
 class Document:
-    """Classe de base pour représenter un document generique"""
+    #Classe de base pour représenter un document generique
     def __init__(self, titre, auteur, date, url, texte):
         self.titre = titre
         
@@ -17,14 +17,14 @@ class Document:
 
 class RedditDocument(Document):
     
-    """Document provenant de reddit, avec le nombre de commentairees"""
+#Document provenant de reddit, avec le nombre de commentairees
     def __init__(self, titre, auteur, date, url, texte, comments=0):
         super().__init__(titre, auteur, date, url, texte)
         self.comments = comments
         self.type = "Reddit"
 
 class ArxivDocument(Document):
-    """Document provenant d'Arxiv, avec liste d'auteurs"""
+    #Document provenant d'Arxiv, avec liste d'auteurs
     def __init__(self, titre, auteurs, date, url, texte):
         
         super().__init__(titre, ", ".join(auteurs), date, url, texte)
