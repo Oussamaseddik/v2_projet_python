@@ -5,7 +5,7 @@ from src.Document import Document, RedditDocument, ArxivDocument
 from src.Author import Author
 
 class Corpus:
-    #Classe pour gérer un corpus complet de documents
+    #Classe pour gerer un corpus complet de documents
     def __init__(self, nom):
         self.nom = nom
         self.authors = {}      
@@ -50,23 +50,24 @@ class Corpus:
                 doc = Document(row["titre"], row["auteur"], row["date"], row["url"], row["texte"])
             self.add_document(doc)
 
-    #TD6 : Analyse textuelle 
+    #TD6 : Analyse textuelle et nettoyage basique 
     def nettoyer_texte(self, texte):
-        """Nettoyage basique : minuscules, suppression \n, ponctuation"""
+        
         texte = texte.lower()
         texte = texte.replace("\n", " ")
         texte = re.sub(r"[^a-z\s]", " ", texte)
         return texte
 
     def vocabulaire(self):
-        """Construit le vocabulaire et le freq (TF et DF)"""
+        #Construit le vocabulaire et le freq (TF et DF)
         vocab = {}
         for doc_id, doc in self.id2doc.items():
             texte = self.nettoyer_texte(doc.texte)
             mots = texte.split()
-            seen = set()
+            seen =set()
             for mot in mots:
                 if mot not in vocab:
+                    
                     vocab[mot] = {"TF":0, "DF":0}
                 vocab[mot]["TF"] += 1
                 if mot not in seen:
